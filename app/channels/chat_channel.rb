@@ -9,6 +9,7 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def say(data)
-    ActionCable.server.broadcast("messages", :message => data["message"])
+    ActionCable.server.broadcast("messages", :user => current_user.email,
+                                             :message => data["message"])
   end
 end

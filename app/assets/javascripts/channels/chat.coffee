@@ -7,7 +7,7 @@ App.chat = App.cable.subscriptions.create "ChatChannel",
   disconnected: ->
 
   received: (data) ->
-    window.board.pushMessage("igor", data.message)
+    window.board.pushMessage(data.user, data.message)
 
   say: (message) ->
     @perform "say", message: message
